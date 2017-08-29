@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  font-size: 100%;
+  font-weight: normal;
+  text-decoration: none;
+  color: #333;
+}
+h1 {
+  font-size: 48px;
+  font-weight: 600;
+  color: #787878;
+}
+ul > li {
+  list-style: none;
+}
+.app {
+  width: 100%;
+}
