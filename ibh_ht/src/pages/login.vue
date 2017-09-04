@@ -4,14 +4,12 @@
       <img src="../assets/logo.png" alt="logo">
     </div>
     <div class="sign">
-      <el-collapse-transition>
         <sign-in class="signin" v-if="seen"></sign-in>
         <sign-up class="signup" v-else></sign-up>
-      </el-collapse-transition>
-    </div>
-    <div class="link">
-      <el-button type="text" @click="show()">登录</el-button>
-      <el-button type="text" @click="hide()">注册</el-button>
+      <div class="link">
+        <el-button type="text" @click="show()">登录</el-button>
+        <el-button type="text" @click="hide()">注册</el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -50,7 +48,6 @@ export default {
 
   .link {
     float: right;
-    position: relative;
   }
 
   .logo {
@@ -62,19 +59,11 @@ export default {
 
   .sign {
     width: 100%;
-    height:auto;
-    height:270px;
     position: relative;
   }
 
-  .signin {
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
-
-  .signup {
-    position: absolute;
+  .signin,.signup {
+    position: relative;
     top: 0;
     width: 100%;
   }

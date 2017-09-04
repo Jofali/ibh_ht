@@ -33,6 +33,5 @@ export default {
     width:100%;
     height: 100%;
     background: #324157;
-    border-top:1px solid #fff;
   }
 </style>

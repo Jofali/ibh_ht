@@ -46,6 +46,7 @@ export default {
         self.$alert(self.num[response.data], '提示', {
           confirmButtonText: '确定'
         })
+        self.$router.push('/')
       })
     }
   }

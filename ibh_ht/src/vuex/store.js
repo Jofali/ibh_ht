@@ -7,20 +7,17 @@ const store = new Vuex.Store({
   state: {
     sign: {
       email: '',
-      password: '',
-      token: '',
-      vertype: false
+      Nickname: '',
+      LoginState: true
     }
   },
   mutations: {
-    updateEmail (state, email) {
-      state.sign.email = email
+    updataSign (state, data) {
+      state.sign.Nickname = data.Nickname
+      state.sign.LoginState = true
     },
-    updatePassword (state, password) {
-      state.sign.password = password
-    },
-    updateVertype (state, vertype) {
-      state.sign.vertype = vertype
+    updataEmail (state, data) {
+      state.sign.email = data
     }
   }
 })

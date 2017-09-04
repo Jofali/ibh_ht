@@ -23,6 +23,11 @@ export default {
     'head-ibh': headIbh,
     'nav-ibh': navIbh,
     'content-ibh': contentIbh
+  },
+  beforeCreate: function () {
+    if (!this.$store.state.sign.LoginState) {
+      this.$router.push('/')
+    }
   }
 }
 </script>
