@@ -7,24 +7,18 @@ import 'element-ui/lib/theme-default/index.css'
 import App from './App'
 import Vuex from 'vuex'
 import routes from './router/index'
-import store from './vuex/store'
+import store from './vuex/'
 import axios from 'axios'
 
 Vue.use(ElementUI)
 Vue.use(Vuex)
 
 Vue.prototype.$axios = axios
+axios.defaults.baseURL = 'http://localhost:1736/api/'
 Vue.config.productionTip = false
 
 const router = new Router({
   routes
-})
-
-router.beforeEach((to, from, next) => {
-  if (!store.state.login) {
-    to.query.url = from.query.url
-  }
-  next()
 })
 
 /* eslint-disable no-new */

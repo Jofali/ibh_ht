@@ -2,7 +2,7 @@
   <div class="signin">
   <el-row>
     <el-col :span="24">
-    <h3>注册</h3>
+    <h3>注<span></span>册</h3>
     </el-col>
     <el-col :span="24" class="signin">
       <ul>
@@ -19,7 +19,10 @@
           <el-input v-model="againPassword" placeholder="再次输入密码" type="password"></el-input>
         </li>
         <li>
-          <el-button type="primary" @click="registered()">注册</el-button>
+          验证类待添加
+        </li>
+        <li>
+          <el-button class="click" type="primary" @click="registered()">注<span></span>册</el-button>
         </li>
       </ul>
     </el-col>
@@ -42,7 +45,11 @@ export default {
   methods: {
     registered: function () {
       const self = this
-      this.$axios.get('http://localhost:1736/api/UserInfo/GetRegister?Email=' + self.email + '&Password=' + self.password + '&Nickname=' + self.nickName).then(function (response) {
+      this.$axios.get('UserInfo/GetRegister', {
+        Email: self.email,
+        Password: self.password,
+        Nickname: self.nickName
+      }).then(function (response) {
         self.$alert(self.num[response.data], '提示', {
           confirmButtonText: '确定'
         })
@@ -53,19 +60,5 @@ export default {
 }
 </script>
 
-<style scoped>
-  li {
-    margin: 20px 0;
-  }
-
-  button {
-    width: 100%;
-  }
-
-  h3{
-    text-align: center;
-    font-size: 36px;
-    color: #20a0ff;
-    text-shadow: 0px 0px 3px #20a0ff;
-  }
+<style lang="less" src="../style/login.less" scoped>
 </style>

@@ -1,8 +1,5 @@
 <template>
   <div class="login">
-    <div class="logo">
-      <img src="../assets/logo.png" alt="logo">
-    </div>
     <div class="sign">
         <sign-in class="signin" v-if="seen"></sign-in>
         <sign-up class="signup" v-else></sign-up>
@@ -40,31 +37,5 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-  .login {
-    width:800px;
-    margin: 0 auto;
-  }
-
-  .link {
-    float: right;
-  }
-
-  .logo {
-    background: #000;
-    text-align: center;
-    padding:30px 0;
-    margin-bottom:30px;
-  }
-
-  .sign {
-    width: 100%;
-    position: relative;
-  }
-
-  .signin,.signup {
-    position: relative;
-    top: 0;
-    width: 100%;
-  }
+<style lang="less" src="../style/login.less" scoped>
 </style>

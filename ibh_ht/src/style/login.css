@@ -1,0 +1,45 @@
+.login {
+  width: 500px;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.login:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.login h3 {
+  font-size: 36px;
+  color: #20a0ff;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.login h3 span {
+  width: 50px;
+  display: inline-block;
+}
+.login li {
+  margin: 20px 0;
+}
+.login .click {
+  width: 100%;
+}
+.login .click span {
+  width: 50px;
+  display: inline-block;
+}
+.login .link {
+  float: right;
+}
+.login .sign {
+  width: 100%;
+  position: relative;
+}
+.login .signin,
+.login .signup {
+  position: relative;
+  top: 0;
+  width: 100%;
+}
