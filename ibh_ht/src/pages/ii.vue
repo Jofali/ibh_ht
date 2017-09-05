@@ -10,7 +10,10 @@
       <el-col :span="24">Email: {{ email }}</el-col>
     </el-row>
     <el-row>
-      <el-col :span="24">用户等级： 超级管理员</el-col>
+      <el-col :span="24">IsUsed：{{ IsUsed }}</el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="24">LogInState：{{ LogInState }}</el-col>
     </el-row>
     <el-row>
       <el-col :span="24"><el-button @click="back">返回</el-button></el-col>
@@ -22,10 +25,16 @@ export default {
   name: 'ii',
   computed: {
     email: function () {
-      return this.$store.state.sign.email
+      return this.$store.state.sign.Email
     },
     Nickname: function () {
       return this.$store.state.sign.Nickname
+    },
+    IsUsed: function () {
+      return this.$store.state.sign.IsUsed
+    },
+    LogInState: function () {
+      return this.$store.state.sign.LogInState
     }
   },
   methods: {

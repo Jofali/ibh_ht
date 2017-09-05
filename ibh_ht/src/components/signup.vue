@@ -45,16 +45,19 @@ export default {
   methods: {
     registered: function () {
       const self = this
-      this.$axios.get('UserInfo/GetRegister', {
-        Email: self.email,
-        Password: self.password,
-        Nickname: self.nickName
-      }).then(function (response) {
-        self.$alert(self.num[response.data], '提示', {
-          confirmButtonText: '确定'
+      if (self.password === self.againPassword) {
+        console.log(self.email, self.password, self.nickName)
+        this.$axios.post('User/Register?Email=' + self.email + '&Password=' + self.password + '&Nickname=' + self.nickName).then(function (response) {
+          self.$alert(self.num[response.data.State], '提示', {
+            confirmButtonText: '确定'
+          })
+          self.$router.push('/')
+        }).catch(function (response) {
+          self.$alert(response.response.data.Message, '提示', {
+            confirmButtonText: '确定'
+          })
         })
-        self.$router.push('/')
-      })
+      }
     }
   }
 }

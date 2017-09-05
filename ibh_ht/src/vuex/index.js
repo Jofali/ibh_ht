@@ -9,8 +9,8 @@ const state = {
     Email: '',
     Password: null,
     Nickname: null,
-    IsUsed: true,
-    logInState: 0
+    IsUsed: null,
+    LogInState: null
   }
 }
 

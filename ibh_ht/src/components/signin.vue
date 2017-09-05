@@ -24,8 +24,8 @@ export default {
   name: 'signin',
   data () {
     return {
-      email: '0',
-      password: '0',
+      email: '1@qq.com',
+      password: '123456',
       tips: ['密码错误', '登陆成功', '用户名不存在']
     }
   },
@@ -35,15 +35,15 @@ export default {
       self.$axios.post('Login/Login?Email=' + self.email + '&Password=' + self.password)
       .then(function (response) {
         const LogInState = self.tips[response.data.LogInState]
-
+        // 更新登录状态
         self.$store.commit('UPDATA_LOGIN', response.data)
-
-        if (LogInState !== 1) {
+        if (response.data.LogInState === 1) {
+          console.log(self.$store.state.sign.LogInState)
+          self.$router.push('admin')
+        } else {
           self.$alert(LogInState, '消息', {
             confirmButtonText: '确定'
           })
-        } else {
-          self.$router.push('admin')
         }
       })
       .catch(function (response) {
