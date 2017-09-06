@@ -1,56 +1,92 @@
 <template>
   <el-row>
     <el-col :span="24">
-    <h3>登<span></span>录</h3>
+      <h3>登<span></span>录</h3>
     </el-col>
     <el-col :span="24" class="signin">
-      <ul>
-        <li>
-          <el-input v-model="email" placeholder="邮箱"></el-input>
-        </li>
-        <li>
-          <el-input v-model="password" placeholder="密码" type="password"></el-input>
-        </li>
-        <li>
-          <el-button class="click" type="primary" @click="login()">登<span></span>录</el-button>
-        </li>
-      </ul>
+      <el-form :model="sign" :rules="rules2" ref="signin">
+        <el-form-item prop="email">
+          <el-input v-model="sign.email" placeholder="邮箱"></el-input>
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input type="password" v-model="sign.password" placeholder="密码"></el-input>
+        </el-form-item>
+        <div class="forget">
+          <el-button type="text" @click="forgetPassword">忘记密码？</el-button>
+        </div>
+        <el-button v-loading.body.lock="Loading" class="click" type="primary" @click="login('signin')">登<span></span>录</el-button>
+      </el-form>
     </el-col>
   </el-row>
 </template>
 
 <script>
 export default {
-  name: 'signin',
   data () {
+    const checkPassword = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入密码'))
+      } else {
+        callback()
+      }
+    }
     return {
-      email: '1@qq.com',
-      password: '123456',
-      tips: ['密码错误', '登陆成功', '用户名不存在']
+      sign: {
+        email: '',
+        password: ''
+      },
+      rules2: {
+        email: [
+           { required: true, message: '请输入邮箱地址', trigger: 'blur' },
+           { type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur,change' }
+        ],
+        password: [
+          { validator: checkPassword, trigger: 'blur, change' }
+        ]
+      },
+      tips: ['连接出错', '登录成功', '密码错误', '无用户'],
+      Loading: false
     }
   },
   methods: {
-    login: function () {
+    login: function (formName) {
       const self = this
-      self.$axios.post('Login/Login?Email=' + self.email + '&Password=' + self.password)
-      .then(function (response) {
-        const LogInState = self.tips[response.data.LogInState]
-        // 更新登录状态
-        self.$store.commit('UPDATA_LOGIN', response.data)
-        if (response.data.LogInState === 1) {
-          console.log(self.$store.state.sign.LogInState)
-          self.$router.push('admin')
-        } else {
-          self.$alert(LogInState, '消息', {
-            confirmButtonText: '确定'
+      self.$refs[formName].validate((valid) => {
+        self.Loading = true
+        if (valid) {
+          self.$axios.post('Login/Login', {
+            Email: self.sign.email,
+            Password: self.sign.password
           })
+          .then(function (response) {
+            const tips = self.tips[response.data.LogInState]
+            self.$store.commit('UPDATA_LOGIN', response.data)
+
+            if (response.data.LogInState === 1) {
+              // 更新登录状态
+              self.$store.state.sign.globalState = true
+              self.$router.push('admin')
+            } else {
+              self.$alert(tips, '消息', {
+                confirmButtonText: '确定'
+              })
+            }
+            self.Loading = false
+          })
+          .catch(function (response) {
+            self.$alert(response, '消息', {
+              confirmButtonText: '确定'
+            })
+            self.Loading = false
+          })
+        } else {
+          self.Loading = false
+          return false
         }
       })
-      .catch(function (response) {
-        self.$alert(response.response.data.Message, '消息', {
-          confirmButtonText: '确定'
-        })
-      })
+    },
+    forgetPassword: function () {
+      this.$router.push('forget')
     }
   }
 }

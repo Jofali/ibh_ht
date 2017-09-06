@@ -30,6 +30,9 @@
   width: 50px;
   display: inline-block;
 }
+.login .forget button {
+  float: right;
+}
 .login .link {
   float: right;
 }

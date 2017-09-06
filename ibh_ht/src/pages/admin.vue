@@ -25,7 +25,7 @@ export default {
     'content-ibh': contentIbh
   },
   beforeCreate: function () {
-    if (this.$store.state.sign.LogInState !== 1) {
+    if (!this.$store.state.sign.globalState) {
       this.$router.push('/')
     }
   }

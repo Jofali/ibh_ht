@@ -29,11 +29,27 @@ export default {
   },
   methods: {
     loginOut: function () {
-      this.$store.state.sign.LoginState = false
-      this.$router.push('/')
+      const self = this
+      console.log(self.$store.state.sign.Id)
+      self.$axios.get('Login/Logout?Id=' + self.$store.state.sign.Id).then(function (response) {
+        self.$store.state.sign.globalState = !response.data
+        console.log(self.$store.state.sign.Id)
+        self.$router.push('/')
+      }).catch(function (response) {
+        console.log(response.response)
+      })
     },
     ii: function () {
-      this.$router.push('/ii')
+      const self = this
+      self.$axios.get('Login/CheckLogin?id=' + self.$store.state.sign.Id).then(function (response) {
+        if (response.data) {
+          self.$router.push('/ii')
+        } else {
+          self.$router.push('/#/')
+        }
+      }).catch(function (response) {
+        console.log(response.response)
+      })
     }
   }
 }
