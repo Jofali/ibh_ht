@@ -28,7 +28,7 @@ export default {
     loginOut: function () {
       const self = this
       self.$axios.get('Login/Logout?Id=' + self.$store.state.sign.Id).then(function (response) {
-        self.$store.state.sign.globalState = !response.data
+        self.$store.commit('UPDATA_CHANGESTATE', 0)
         self.$notify({
           title: '成功',
           message: '注销成功',
@@ -45,6 +45,7 @@ export default {
         if (response.data) {
           self.$router.push('/ii')
         } else {
+          self.$store.commit('UPDATA_CHANGESTATE', 0)
           self.$router.push('/#/')
         }
       }).catch(function (response) {

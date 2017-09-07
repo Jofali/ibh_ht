@@ -20,7 +20,8 @@ export default {
     'content-ibh': content
   },
   beforeCreate: function () {
-    if (!this.$store.state.sign.globalState) {
+    this.$store.commit('UPDATA_RUSHSTATE')
+    if (this.$store.state.sign.LogInState !== 1) {
       this.$router.push('/')
     }
   }

@@ -2,22 +2,17 @@
   <div class="ii">
   <el-row>
       <el-col :span="24">个人资料</el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="24">Nickname: {{ used.Nickname }}</el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="24">Id：{{ used.Id }}</el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="24">LogInState：{{ used.LogInState }}</el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="24">globalState：{{ used.globalState }}</el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="24"><el-button @click="back">返回</el-button></el-col>
-    </el-row>
+  </el-row>
+  <el-row>
+      <el-col :span="24">
+        <ul>
+          <li v-for="(item, index) in used">{{ index+ ': ' +item }}</li>
+        </ul>
+      </el-col>
+  </el-row>
+  <el-row>
+    <el-col :span="24"><el-button @click="back">返回</el-button></el-col>
+  </el-row>
   </div>
 </template>
 <script>

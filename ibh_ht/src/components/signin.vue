@@ -60,7 +60,7 @@ export default {
           })
           .then(function (response) {
             const tips = self.tips[response.data.LogInState]
-            self.$store.commit('UPDATA_LOGIN', response.data)
+            self.$store.commit('UPDATA_STARTLOGIN', response.data)
 
             if (response.data.LogInState === 1) {
               // 更新登录状态
