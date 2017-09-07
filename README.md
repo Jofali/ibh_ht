@@ -18,5 +18,8 @@
   2. 用户操作
   3. 评论操作
 ## Vuex 结构
-___
-      待补充
+
+  1.state
+  2.mutations
+  3.action
+  4.getter
