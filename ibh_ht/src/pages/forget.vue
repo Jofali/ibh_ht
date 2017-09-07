@@ -18,8 +18,8 @@
         </el-form-item>
         <el-form-item prop="newPassword2">
           <el-input v-model="forget.newPassword2" placeholder="再次输入新密码"></el-input>
-          <a href="/#/">返回</a>
         </el-form-item>
+        <a href="/#/">返回</a>
         <el-button class="click" v-loading.body.lock="loading" type="primary" @click="submitNewpass('forget')">提交</el-button>
       </el-form>
     </el-col>

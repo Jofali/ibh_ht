@@ -1,10 +1,7 @@
 <template>
   <div class="admin">
-    <header>
-      <head-ibh></head-ibh>
-    </header>
     <nav>
-      <nav-ibh></nav-ibh>
+      <head-ibh></head-ibh>
     </nav>
     <section>
       <content-ibh></content-ibh>
@@ -14,15 +11,13 @@
 
 <script>
 import headIbh from '@/components/headibh'
-import navIbh from '@/components/navibh'
-import contentIbh from '@/components/contentibh'
+import content from '@/pages/content'
 
 export default {
   name: 'admin',
   components: {
     'head-ibh': headIbh,
-    'nav-ibh': navIbh,
-    'content-ibh': contentIbh
+    'content-ibh': content
   },
   beforeCreate: function () {
     if (!this.$store.state.sign.globalState) {

@@ -1,6 +1,5 @@
 <template>
-  <div class="content">
-    <el-table
+  <el-table
       :data="tableData"
       height="250"
       style="width: 100%">
@@ -12,12 +11,12 @@
       </el-table-column>
       <el-table-column
         prop="name"
-        label="作者"
+        label="类型名称"
         width="180">
       </el-table-column>
       <el-table-column
         prop="title"
-        label="标题">
+        label="类型描述">
       </el-table-column>
       <el-table-column
         label="状态">
@@ -54,40 +53,32 @@
       </template>
       </el-table-column>
     </el-table>
-  </div>
 </template>
 
 <script>
 export default {
-  name: 'content',
+  name: 'table1',
   data () {
     return {
       tableData: [
         {
-          date: '2016-05-02',
-          name: '王小虎',
-          title: '上海市普陀区金沙江路 1518 弄',
+          date: '------',
+          name: '热门',
+          title: '评论数超过了XX',
           status: '上架',
           stop: true
         },
         {
-          date: '2016-05-04',
-          name: '王小虎',
-          title: '上海市普陀区金沙江路 1517 弄',
-          status: '下架',
-          stop: false
-        },
-        {
-          date: '2016-05-01',
-          name: '王小虎',
-          title: '上海市普陀区金沙江路 1519 弄',
+          date: '------',
+          name: '精华',
+          title: '李根觉得很不错',
           status: '上架',
           stop: false
         },
         {
-          date: '2016-05-03',
-          name: '王小虎',
-          title: '上海市普陀区金沙江路 1516 弄',
+          date: '------',
+          name: '最新',
+          title: '按发布时间',
           status: '上架',
           stop: false
         }
@@ -103,8 +94,6 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-  .content {
-    width: 100%;
-  }
+<style>
+
 </style>

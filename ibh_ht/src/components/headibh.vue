@@ -2,10 +2,7 @@
   <div class="head">
     <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
       <span class="logo"><img src="../assets/logo.png"></span>
-      <el-menu-item index="1">文章管理</el-menu-item>
-      <el-menu-item index="2">用户管理</el-menu-item>
-      <el-menu-item index="3">评论管理</el-menu-item>
-      <el-submenu class="login" index="4">
+      <el-submenu class="login" index="1">
         <template slot="title"><i class="el-icon-share"></i>{{ Nickname }}</template>
         <el-menu-item index="2-1" @click="ii">个人资料</el-menu-item>
         <el-menu-item index="2-2" @click="loginOut">登出</el-menu-item>
@@ -61,6 +58,7 @@ export default {
 <style lang="less" scoped>
   .head {
     width: 100%;
+    background: #324157;
   }
   .logo {
     width: 15%;

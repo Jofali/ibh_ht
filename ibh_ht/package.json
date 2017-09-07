@@ -2,7 +2,7 @@
   "name": "ibh_ht",
   "version": "1.0.0",
   "description": "后台",
-  "author": "PC-201707212359\\Administrator <247686992@qq.com>",
+  "author": "247686992@qq.com",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

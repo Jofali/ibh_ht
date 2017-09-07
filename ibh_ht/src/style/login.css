@@ -46,3 +46,11 @@
   top: 0;
   width: 100%;
 }
+.login .signin .vcode-content {
+  width: 50%;
+  float: right;
+}
+.login .signin .vcode-img {
+  float: right;
+  margin-left: 20px;
+}

@@ -22,7 +22,10 @@
           <el-input v-model="signup.againPassword" placeholder="再次输入密码" type="password"></el-input>
         </el-form-item>
 
-        <div>验证类待添加</div>
+         <el-form-item prop="vCodeput">
+          <img @click="count" class="vcode-img" :src="'http://localhost:1736/api/Login/Verify?Id=' + id + '&OldId=' + oldid" />
+          <el-input class="vcode-content" v-model="signup.vCodeput" placeholder="输入验证码"></el-input>
+        </el-form-item>
         <el-button v-loading.body.lock="fullscreenLoading" class="click" type="primary" @click="registered('signup')">注<span></span>册</el-button>
       </el-form>
     </el-col>
@@ -57,12 +60,32 @@ export default {
         callback(new Error('两次输入不一致'))
       }
     }
+    const checkCode = (rule, value, callback) => {
+      const self = this
+      if (value === '') {
+        callback(new Error('验证码不能为空'))
+      } else {
+        self.$axios.get('Login/CheckVerify?Verify=' + self.signup.vCodeput + '&Id=' + self.id
+        ).then(function (response) {
+          self.vid = response.data
+          console.log(response.data)
+          if (self.vid) {
+            callback()
+          } else {
+            callback(new Error('验证码错误'))
+          }
+        }).catch(function (error) {
+          console.log(error)
+        })
+      }
+    }
     return {
       signup: {
         email: '',
         nickName: '',
         password: '',
-        againPassword: ''
+        againPassword: '',
+        vCodeput: ''
       },
       rules: {
         email: [
@@ -77,10 +100,22 @@ export default {
         ],
         againPassword: [
           { validator: checkPassword2, trigger: 'blur, change' }
+        ],
+        vCodeput: [
+          { validator: checkCode, trigger: 'blur' }
         ]
       },
       num: ['写数据库失败', '注册成功', '邮箱已注册', '昵称已注册'],
-      fullscreenLoading: false
+      fullscreenLoading: false,
+      id: this.imgRandom(),
+      oldid: 0,
+      cid: 0,
+      vid: false
+    }
+  },
+  computed: {
+    iCode: function () {
+      return this.vCode
     }
   },
   methods: {
@@ -109,6 +144,21 @@ export default {
           return false
         }
       })
+    },
+    count: function () {
+      this.oldid = this.cid
+      this.id = this.imgRandom()
+      this.cid = this.id
+      console.log('老id:' + this.oldid + ', 本次缓存的id:' + this.cid + '新id:' + this.id)
+    },
+    imgRandom: function () {
+      const str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+      const n = 10
+      let s = ''
+      for (let i = 0; i < n; i++) {
+        s += str.charAt(Math.floor(Math.random() * str.length))
+      }
+      return s
     }
   }
 }
