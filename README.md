@@ -19,7 +19,7 @@
   3. 评论操作
 ## Vuex 结构
 
-  1.state
-  2.mutations
-  3.action
-  4.getter
+  1. state
+  2. mutations
+  3. action
+  4. getter
