@@ -23,7 +23,7 @@
         </el-form-item>
 
          <el-form-item prop="vCodeput">
-          <img @click="count" class="vcode-img" :src="'http://localhost:1736/api/Login/Verify?Id=' + id + '&OldId=' + oldid" />
+          <img @click="count" class="vcode-img" :src="'http://www.lgwow.com/api/Login/Verify?Id=' + id + '&OldId=' + oldid" />
           <el-input class="vcode-content" v-model="signup.vCodeput" placeholder="输入验证码"></el-input>
         </el-form-item>
         <el-button v-loading.body.lock="fullscreenLoading" class="click" type="primary" @click="registered('signup')">注<span></span>册</el-button>
