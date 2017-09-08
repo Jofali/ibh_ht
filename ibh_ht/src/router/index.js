@@ -20,6 +20,7 @@ Vue.use(Router)
 const routes = [
   {
     path: '/',
+    name: 'sign',
     component: sign
   },
   {

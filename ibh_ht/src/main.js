@@ -18,6 +18,7 @@ axios.defaults.baseURL = 'http://localhost:1736/api/'
 Vue.config.productionTip = false
 
 const router = new Router({
+  mode: 'history',
   routes
 })
 
