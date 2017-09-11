@@ -4,7 +4,7 @@
       <el-col :span="24">
       <el-menu default-active="2" class="el-menu-vertical-demo">
         <el-submenu index="1">
-          <template slot="title"><i class="el-icon-message"></i>文章管理</template>
+          <template slot="title"><i class="el-icon-my-art"></i>文章管理</template>
           <el-menu-item-group>
             <template slot="title">类型管理</template>
             <router-link to="/admin/types">
@@ -26,10 +26,10 @@
           </el-submenu>
         </el-submenu>
         <router-link to="/admin/types8">
-          <el-menu-item index="2"><i class="el-icon-menu"></i>用户管理</el-menu-item>
+          <el-menu-item index="2"><i class="el-icon-my-user"></i>用户管理</el-menu-item>
         </router-link>
         <router-link to="/admin/types9">
-          <el-menu-item index="3"><i class="el-icon-setting"></i>评论管理</el-menu-item>
+          <el-menu-item index="3"><i class="el-icon-my-talk"></i>评论管理</el-menu-item>
         </router-link>
     </el-menu>
     </el-col>

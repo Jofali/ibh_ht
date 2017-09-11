@@ -34,8 +34,10 @@
 </script>
 
 <style lang="less" scoped>
-    div {
+    .table2 {
     width:80%;
+    height:90%;
+    overflow:hidden;
     padding-top: 2%;
     margin: 0 auto;
     h1 {

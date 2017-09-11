@@ -40,11 +40,10 @@
   width: 100%;
   position: relative;
 }
-.login .signin,
-.login .signup {
-  position: relative;
-  top: 0;
-  width: 100%;
+.login .sign:after {
+  content: '';
+  display: block;
+  clear: both;
 }
 .login .signin .vcode-content {
   width: 50%;
@@ -53,4 +52,9 @@
 .login .signin .vcode-img {
   float: right;
   margin-left: 20px;
+}
+.login .footer {
+  margin: 20px 0;
+  text-align: center;
+  width: 100%;
 }

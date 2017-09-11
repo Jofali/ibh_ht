@@ -14,7 +14,7 @@ Vue.use(ElementUI)
 Vue.use(Vuex)
 
 Vue.prototype.$axios = axios
-axios.defaults.baseURL = 'http://www.lgwow.com/api/'
+axios.defaults.baseURL = 'http://localhost:1736/api/'
 Vue.config.productionTip = false
 
 const router = new Router({

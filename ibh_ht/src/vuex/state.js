@@ -1,3 +1,4 @@
 export default {
-  sign: {}
+  sign: {},
+  sortTable: []
 }

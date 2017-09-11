@@ -130,9 +130,11 @@ export default {
             Nickname: self.signup.nickName
           }).then(function (response) {
             self.$alert(self.num[response.data], '提示', {
-              confirmButtonText: '确定'
+              confirmButtonText: '确定',
+              callback: action => {
+                self.$router.push('/')
+              }
             })
-            self.$router.push('/')
           }).catch(function (response) {
             self.$alert(response.response.data, '提示', {
               confirmButtonText: '确定'

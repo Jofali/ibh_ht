@@ -8,6 +8,9 @@
         <el-button type="text" @click="hide()">注册</el-button>
       </div>
     </div>
+    <footer class="footer">
+      <el-button type="text">豫ICP备17025838号-1</el-button>
+    </footer>
   </div>
 </template>
 

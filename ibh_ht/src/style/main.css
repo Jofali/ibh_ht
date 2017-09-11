@@ -7,6 +7,32 @@ body {
   height: 100%;
   font-size: 18px;
 }
+@font-face {
+  font-family: 'icomoon';
+  src: url('fonts/icomoon.eot?504t6a');
+  src: url('fonts/icomoon.eot?504t6a#iefix') format('embedded-opentype'), url('fonts/icomoon.ttf?504t6a') format('truetype'), url('fonts/icomoon.woff?504t6a') format('woff'), url('fonts/icomoon.svg?504t6a#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="el-icon-my"],
+[class*=" el-icon-my"] {
+  font-family: "icomoon" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+}
+.el-icon-my-talk:before {
+  content: "\e900";
+}
+.el-icon-my-art:before {
+  content: "\e901";
+}
+.el-icon-my-user:before {
+  content: "\e902";
+}
 h1,
 h2,
 h3,
