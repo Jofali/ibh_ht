@@ -1,6 +1,6 @@
 <template>
 <div class="sort-wrap">
-  <el-row class="nav">
+  <el-row class="content-nav">
     <h2>
       <i class="el-icon-menu"></i>
       类型管理
@@ -73,7 +73,7 @@
       label="创建时间">
     </el-table-column>
     <el-table-column
-      prop="CreateUserId"
+      prop="CreateUserName"
       label="创建者">
     </el-table-column>
     <el-table-column
@@ -140,6 +140,10 @@ export default {
       const self = this
       self.$axios.get('Article/Type').then((response) => {
         self.$store.commit('UPDATA_SORTTABLE', response.data)
+        for (let i = 0; i < self.$store.state.sortTable.length; i++) {
+          let arr = self.$store.state.sortTable[i].CreateDate.substring(0, 10)
+          self.$store.commit('UPDATA_SORTTABLEDATE', {i, arr})
+        }
       }).catch((error) => {
         console.log(error)
       })
@@ -238,17 +242,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .nav {
-    width:95%;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    h2 {
-      color: #787878;
-      padding-bottom: 20px;
-      i {
-        color:#787878;
-      }
-    }
-  }
 </style>

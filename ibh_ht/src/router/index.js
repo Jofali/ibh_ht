@@ -5,8 +5,8 @@ import sign from '@/pages/login'
 import ii from '@/pages/ii'
 import forget from '@/pages/forget'
 import table from '@/components/content/table'
-import table1 from '@/components/content/table1'
-import table2 from '@/components/content/table2'
+import sort from '@/components/content/sort'
+import article from '@/components/content/article'
 import table3 from '@/components/content/table3'
 import table4 from '@/components/content/table4'
 import table5 from '@/components/content/table5'
@@ -14,6 +14,7 @@ import table6 from '@/components/content/table6'
 import table7 from '@/components/content/table7'
 import table8 from '@/components/content/table8'
 import table9 from '@/components/content/table9'
+import addarticle from '@/components/content/addarticle'
 
 Vue.use(Router)
 
@@ -32,12 +33,16 @@ const routes = [
         component: table
       },
       {
-        path: 'types',
-        component: table1
+        path: 'sort',
+        component: sort
       },
       {
-        path: 'types2',
-        component: table2
+        path: 'article',
+        component: article
+      },
+      {
+        path: 'addarticle',
+        component: addarticle
       },
       {
         path: 'types3',

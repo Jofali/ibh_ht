@@ -2,6 +2,7 @@ const UPDATA_STARTLOGIN = 'UPDATA_STARTLOGIN'
 const UPDATA_CHANGESTATE = 'UPDATA_CHANGESTATE'
 const UPDATA_GETSESSIONSIGN = 'UPDATA_GETSESSIONSIGN'
 const UPDATA_SORTTABLE = 'UPDATA_SORTTABLE'
+const UPDATA_SORTTABLEDATE = 'UPDATA_SORTTABLEDATE'
 
 export default {
   [UPDATA_STARTLOGIN] (state, data) {
@@ -21,5 +22,8 @@ export default {
   },
   [UPDATA_SORTTABLE] (state, data) {
     state.sortTable = data
+  },
+  [UPDATA_SORTTABLEDATE] (state, data) {
+    state.sortTable[data.i].CreateDate = data.arr
   }
 }

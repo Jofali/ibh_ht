@@ -7,12 +7,12 @@
           <template slot="title"><i class="el-icon-my-art"></i>文章管理</template>
           <el-menu-item-group>
             <template slot="title">类型管理</template>
-            <router-link to="/admin/types">
+            <router-link to="/admin/sort">
               <el-menu-item index="1-1">所有类型</el-menu-item>
             </router-link>
           </el-menu-item-group>
           <el-menu-item-group title="文章列表">
-            <router-link to="/admin/types2">
+            <router-link to="/admin/article">
               <el-menu-item index="1-3">所有文章</el-menu-item>
             </router-link>
           </el-menu-item-group>

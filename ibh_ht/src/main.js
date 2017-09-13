@@ -9,9 +9,12 @@ import Vuex from 'vuex'
 import routes from './router/index'
 import store from './vuex/'
 import axios from 'axios'
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 
 Vue.use(ElementUI)
 Vue.use(Vuex)
+Vue.use(mavonEditor)
 
 Vue.prototype.$axios = axios
 axios.defaults.baseURL = 'http://localhost:1736/api/'
