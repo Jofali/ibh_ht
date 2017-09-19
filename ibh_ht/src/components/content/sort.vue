@@ -40,7 +40,8 @@
   <el-table
     :data="this.$store.state.sortTable"
     height="250"
-    style="width: 95%;margin: 0 auto;">
+    v-loading.body="loading"
+    class="table">
     <el-table-column
       prop="AtId"
       label="类别Id">
@@ -126,7 +127,8 @@ export default {
       },
       dialog: false,
       edit: false,
-      editForm: {}
+      editForm: {},
+      loading: true
     }
   },
   created: function () {
@@ -138,18 +140,22 @@ export default {
     },
     updataSort () {
       const self = this
+      self.loading = true
       self.$axios.get('Article/Type').then((response) => {
         self.$store.commit('UPDATA_SORTTABLE', response.data)
         for (let i = 0; i < self.$store.state.sortTable.length; i++) {
           let arr = self.$store.state.sortTable[i].CreateDate.substring(0, 10)
           self.$store.commit('UPDATA_SORTTABLEDATE', {i, arr})
         }
+        self.loading = false
       }).catch((error) => {
         console.log(error)
+        self.loading = false
       })
     },
     addSort () {
       const self = this
+      self.loading = true
       self.$axios.post('Article/AddType', self.form).then((response) => {
         if (response.data) {
           self.dialog = false
@@ -163,6 +169,7 @@ export default {
         }
       }).catch((error) => {
         console.log(error)
+        self.loading = false
       })
     },
     deleteSort (sortId) {
@@ -199,6 +206,7 @@ export default {
     },
     editTable () {
       const self = this
+      self.loading = true
       self.$axios.get('Article/MdfType?AtId=' + self.editForm.AtId + '&TypeName=' + self.editForm.TypeName + '&Note=' + self.editForm.Note).then((response) => {
         if (response.data) {
           self.$message({
@@ -215,8 +223,10 @@ export default {
         this.updataSort()
       }).catch((error) => {
         console.log(error)
+        self.loading = false
       })
     },
+    // 上下架
     editUsable (index) {
       const self = this
       const form = this.$store.state.sortTable[index]
@@ -241,5 +251,5 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less" src="@/style/article.less">
 </style>

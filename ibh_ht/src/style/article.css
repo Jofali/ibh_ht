@@ -22,3 +22,7 @@
 .add-article .input {
   width: 30%;
 }
+.table {
+  width: 95%;
+  margin: 0 auto;
+}

@@ -1,6 +1,6 @@
 <template>
   <div class="table2">
-    默认的内容4
+     4
   </div>
 </template>
 

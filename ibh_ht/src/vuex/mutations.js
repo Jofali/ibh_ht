@@ -22,6 +22,7 @@ export default {
   },
   [UPDATA_SORTTABLE] (state, data) {
     state.sortTable = data
+    sessionStorage.sortTable = JSON.stringify(state.sortTable)
   },
   [UPDATA_SORTTABLEDATE] (state, data) {
     state.sortTable[data.i].CreateDate = data.arr

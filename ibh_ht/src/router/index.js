@@ -7,11 +7,7 @@ import forget from '@/pages/forget'
 import table from '@/components/content/table'
 import sort from '@/components/content/sort'
 import article from '@/components/content/article'
-import table3 from '@/components/content/table3'
-import table4 from '@/components/content/table4'
-import table5 from '@/components/content/table5'
-import table6 from '@/components/content/table6'
-import table7 from '@/components/content/table7'
+import editarticle from '@/components/content/editarticle'
 import table8 from '@/components/content/table8'
 import table9 from '@/components/content/table9'
 import addarticle from '@/components/content/addarticle'
@@ -37,7 +33,7 @@ const routes = [
         component: sort
       },
       {
-        path: 'article',
+        path: 'article/:id',
         component: article
       },
       {
@@ -45,24 +41,8 @@ const routes = [
         component: addarticle
       },
       {
-        path: 'types3',
-        component: table3
-      },
-      {
-        path: 'types4',
-        component: table4
-      },
-      {
-        path: 'types5',
-        component: table5
-      },
-      {
-        path: 'types6',
-        component: table6
-      },
-      {
-        path: 'types7',
-        component: table7
+        path: 'editarticle/:id',
+        component: editarticle
       },
       {
         path: 'types8',
