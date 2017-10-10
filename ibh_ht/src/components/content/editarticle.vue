@@ -17,14 +17,14 @@
     {{ articleInfo.Cover }}
   </el-form-item>
   <el-form-item label="类型">
-    <el-select v-model="test" placeholder="请选择类型">
+    <el-select v-model="sortId" placeholder="请选择类型">
       <el-option
         disabled
         label="请选择"
         value=""
       >
       </el-option>
-      <el-option 
+      <el-option
         v-for="item in sort" 
         :key="item.AtId"
         :label="item.TypeName" 
@@ -32,13 +32,12 @@
       >
       </el-option>
     </el-select>
-    {{ test }}
   </el-form-item>
   <el-form-item label="正文">
     <mavon-editor 
       :toolbars="toolbars" 
-      v-model="articleInfo.Content" 
-      @change="htmlContent" 
+      v-model="articleInfo.Content"
+      @change="htmlContent"
       placeholder="蠢萌的 Markdown 编辑器,如果你对 Markdown 语法不熟悉，你可以点击右上角，花费短短五分钟学习如何使用"
       >
     </mavon-editor>
@@ -66,7 +65,8 @@ export default {
         htmlcode: true // 展示html源码
       },
       sort: {},
-      test: ''
+      sortId: '',
+      content: ''
     }
   },
   created: function () {
@@ -86,25 +86,26 @@ export default {
     })
   },
   methods: {
-    htmlContent (val, render) {
-      this.articleInfo.Content = render
+    htmlContent (value, render) {
+      this.content = render
     },
     submit () {
       const self = this
       self.$axios.post('Article/MdfArticle', {
         AId: self.articleInfo.AId,
-        Content: self.articleInfo.Content,
+        Content: self.content,
         Title: self.articleInfo.Title,
         Outline: self.articleInfo.Outline,
-        Cover: self.articleInfo.Cover
+        Cover: self.articleInfo.Cover,
+        AType: self.sortId
       }).then((response) => {
         if (response.data) {
           this.$message({
-            message: '恭喜你，这是一条成功消息',
+            message: '修改成功',
             type: 'success'
           })
         } else {
-          this.$message.error('失败，这是一条失败消息')
+          this.$message.error('修改失败')
         }
       }).catch((response) => {
         console.log(response)

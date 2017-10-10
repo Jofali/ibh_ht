@@ -61,7 +61,7 @@
           Title: '',
           Author: 1,
           AType: 17,
-          Outline: '1',
+          Outline: '',
           Cover: '1',
           Content: '<h1>蠢萌的 Markdown 编辑器</h1>'
         },
@@ -84,19 +84,29 @@
       }
     },
     created: function () {
-      const sortTable = this.$store.state.sortTable
+      const self = this
       this.AddArticle.Author = this.$store.state.sign.Id
       this.niceName = this.$store.state.sign.Nickname
-      // 整理下拉列表数据
-      for (let i = 0; i < sortTable.length; i++) {
-        if (i === sortTable.length - 1) {
-          this.cities += '{"AtId":' + sortTable[i].AtId + ',' + '"TypeName":"' + sortTable[i].TypeName + '"}'
-        } else {
-          this.cities += '{"AtId":' + sortTable[i].AtId + ',' + '"TypeName":"' + sortTable[i].TypeName + '"},'
+      self.$axios.get('Article/Type').then((response) => {
+        self.$store.commit('UPDATA_SORTTABLE', response.data)
+        for (let i = 0; i < self.$store.state.sortTable.length; i++) {
+          let arr = self.$store.state.sortTable[i].CreateDate.substring(0, 10)
+          self.$store.commit('UPDATA_SORTTABLEDATE', {i, arr})
         }
-      }
-      this.cities += ']}'
-      this.cities = JSON.parse(this.cities)
+        const sortTable = this.$store.state.sortTable
+        // 整理下拉列表数据
+        for (let i = 0; i < sortTable.length; i++) {
+          if (i === sortTable.length - 1) {
+            self.cities += '{"AtId":' + sortTable[i].AtId + ',' + '"TypeName":"' + sortTable[i].TypeName + '"}'
+          } else {
+            self.cities += '{"AtId":' + sortTable[i].AtId + ',' + '"TypeName":"' + sortTable[i].TypeName + '"},'
+          }
+        }
+        self.cities += ']}'
+        self.cities = JSON.parse(self.cities)
+      }).catch((error) => {
+        console.log(error)
+      })
     },
     methods: {
       checkSort (key) {
