@@ -144,7 +144,8 @@
           }
           self.loading = false
         }).catch((response) => {
-          self.$alert('消息读取失败了', '消息', {
+          self.loading = false
+          self.$alert(response, '消息', {
             confirmButtonText: '确定'
           })
         })
