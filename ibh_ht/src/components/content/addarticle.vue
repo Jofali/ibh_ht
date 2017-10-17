@@ -28,7 +28,7 @@
       <el-form-item label="文章封面Url">
         <el-upload
           class="upload-demo"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="http://www.lgwow.com/api/Article/UploadImage"
           :on-preview="handlePreview"
           :on-remove="handleRemove"
           :file-list="fileList2"
@@ -120,8 +120,9 @@
       },
       handleSuccess (response, file, fileList) {
         this.disabled = true
+        this.AddArticle.Cover = file.response
         this.$message({
-          message: '恭喜你，这是一条成功消息',
+          message: '封面上传成功！',
           type: 'success'
         })
       },

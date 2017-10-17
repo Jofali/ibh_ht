@@ -22,6 +22,24 @@
 .add-article .input {
   width: 30%;
 }
+.add-article .pic {
+  width: 200px;
+}
+.add-article .upload-demo {
+  width: 300px;
+}
+.add-article .editcover {
+  width: 800px;
+  margin: 0 auto;
+}
+.add-article .editcover .el-dialog__body:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.add-article .editcover .el-dialog__body .dialog-footer {
+  float: right;
+}
 .table {
   width: 95%;
   margin: 0 auto;

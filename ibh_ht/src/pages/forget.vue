@@ -1,30 +1,30 @@
 <template>
 <div class="login">
     <div class="sign">
-  <el-row>
-    <el-col :span="24">
-      <h3>修改密码</h3>
-    </el-col>
-    <el-col :span="24" class="signin">
-      <el-form :model="forget" :rules="rules2" ref="forget">
-        <el-form-item prop="email">
-          <el-input v-model="forget.email" placeholder="邮箱"></el-input>
-        </el-form-item>
-        <el-form-item prop="oldPassword">
-          <el-input v-model="forget.oldPassword" placeholder="旧密码"></el-input>
-        </el-form-item>
-        <el-form-item prop="newPassword">
-          <el-input v-model="forget.newPassword" placeholder="新密码"></el-input>
-        </el-form-item>
-        <el-form-item prop="newPassword2">
-          <el-input v-model="forget.newPassword2" placeholder="再次输入新密码"></el-input>
-        </el-form-item>
-        <a href="/#/">返回</a>
-        <el-button class="click" v-loading.body.lock="loading" type="primary" @click="submitNewpass('forget')">提交</el-button>
-      </el-form>
-    </el-col>
-  </el-row>
-  </div>
+      <el-row>
+        <el-col :span="24">
+          <h3>修改密码</h3>
+        </el-col>
+        <el-col :span="24" class="signin">
+          <el-form :model="forget" :rules="rules2" ref="forget">
+            <el-form-item prop="email">
+              <el-input v-model="forget.email" placeholder="邮箱"></el-input>
+            </el-form-item>
+            <el-form-item prop="oldPassword">
+              <el-input v-model="forget.oldPassword" placeholder="旧密码"></el-input>
+            </el-form-item>
+            <el-form-item prop="newPassword">
+              <el-input v-model="forget.newPassword" placeholder="新密码"></el-input>
+            </el-form-item>
+            <el-form-item prop="newPassword2">
+              <el-input v-model="forget.newPassword2" placeholder="再次输入新密码"></el-input>
+            </el-form-item>
+            <el-button class="click" v-loading.body.lock="loading" type="primary" @click="submitNewpass('forget')">提交</el-button>
+          </el-form>
+        </el-col>
+      </el-row>
+      <router-link to="/">返回</router-link>
+    </div>
   </div>
 </template>
 <script>

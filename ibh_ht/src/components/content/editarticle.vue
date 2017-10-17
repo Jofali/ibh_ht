@@ -14,7 +14,27 @@
   <el-input class="input" v-model="articleInfo.Outline" type="textarea"></el-input>
   </el-form-item>
   <el-form-item label="封面">
-    {{ articleInfo.Cover }}
+  <el-button type="text" @click="CoverEdit = true">修改封面</el-button>
+  <el-dialog class="editcover" title="修改封面" :visible.sync="CoverEdit">
+      <el-upload
+        class="upload-demo"
+        action="http://www.lgwow.com/api/Article/UploadImage"
+        :on-preview="handlePreview"
+        :on-remove="handleRemove"
+        :on-success="handleSuccess"
+        :on-error="handleError"
+        drag
+        list-type="picture">
+        <i class="el-icon-upload"></i>
+        <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+        <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+    </el-upload>
+    <div class="dialog-footer">
+      <el-button @click="CoverEdit = false">取 消</el-button>
+      <el-button type="primary" @click="">确 定</el-button>
+    </div>
+</el-dialog>
+    <img class="pic" :src="articleInfo.Cover" alt="">
   </el-form-item>
   <el-form-item label="类型">
     <el-select v-model="sortId" placeholder="请选择类型">
@@ -66,18 +86,16 @@ export default {
       },
       sort: {},
       sortId: '',
-      content: ''
+      content: '',
+      CoverEdit: false
     }
   },
   created: function () {
     const self = this
     self.$axios.get('Article/ArticleInfo?AId=' + self.$route.params.id).then((response) => {
       self.articleInfo = response.data
-      console.log(1)
       self.$axios.get('Article/Type').then((response) => {
         self.sort = response.data
-        console.log(2)
-        console.log(self.sort)
       }).catch((response) => {
         console.log(response)
       })
@@ -109,6 +127,26 @@ export default {
         }
       }).catch((response) => {
         console.log(response)
+      })
+    },
+    handleRemove (file, fileList) {
+      console.log(file, fileList)
+    },
+    handlePreview (file) {
+      console.log(file)
+    },
+    handleSuccess (response, file, fileList) {
+      this.CoverEdit = false
+      this.articleInfo.Cover = file.response
+      this.$message({
+        message: '封面上传成功！',
+        type: 'success'
+      })
+    },
+    handleError (err, file, fileList) {
+      this.$message({
+        message: err,
+        type: 'error'
       })
     }
   }

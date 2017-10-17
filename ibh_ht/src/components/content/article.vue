@@ -50,8 +50,11 @@
       </el-table-column>
       <el-table-column
         label="封面"
-        prop="Cover"
+        width="100"
         >
+        <template scope="scope">
+          <img style="width:100%;" :src="scope.row.Cover" alt="">
+        </template>
       </el-table-column>
       <el-table-column
         label="作者"
@@ -68,16 +71,15 @@
         label="审核"
         prop="Auditing"
       >
-      <template scope="scope">
-            <el-switch
-              v-model="scope.row.Usable"
-              on-color="#13ce66"
-              off-color="#ff4949"
-              on-text="通过"
-              off-text="待审"
-              @change="editUsable(scope.$index)">
-            </el-switch>
-          </el-tooltip>
+        <template scope="scope">
+          <el-switch
+            v-model="scope.row.Usable"
+            on-color="#13ce66"
+            off-color="#ff4949"
+            on-text="通过"
+            off-text="待审"
+            @change="editUsable(scope.$index)">
+          </el-switch>
         </template>
       </el-table-column>
       <el-table-column

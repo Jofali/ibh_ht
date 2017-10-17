@@ -40,6 +40,13 @@
   width: 100%;
   position: relative;
 }
+.login .sign a {
+  float: right;
+  font-size: 16px;
+  color: #20a0ff;
+  padding: 10px 0;
+  letter-spacing: 5px;
+}
 .login .sign:after {
   content: '';
   display: block;
