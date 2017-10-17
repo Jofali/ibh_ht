@@ -30,6 +30,10 @@
   width: 50px;
   display: inline-block;
 }
+.login .forget-btn {
+  width: 100%;
+  margin: 20px 0;
+}
 .login .forget button {
   float: right;
 }

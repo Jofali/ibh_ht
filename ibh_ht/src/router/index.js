@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import admin from '@/pages/admin'
 import sign from '@/pages/login'
-import ii from '@/pages/ii'
+import member from '@/pages/member'
 import forget from '@/pages/forget'
 import table from '@/components/content/table'
 import sort from '@/components/content/sort'
@@ -11,6 +11,8 @@ import editarticle from '@/components/content/editarticle'
 import table8 from '@/components/content/table8'
 import table9 from '@/components/content/table9'
 import addarticle from '@/components/content/addarticle'
+import forget1 from '@/components/forget1'
+import forget2 from '@/components/forget2'
 
 Vue.use(Router)
 
@@ -55,12 +57,22 @@ const routes = [
     ]
   },
   {
-    path: '/ii',
-    component: ii
+    path: '/member',
+    component: member
   },
   {
     path: '/forget',
-    component: forget
+    component: forget,
+    children: [
+      {
+        path: '/',
+        component: forget1
+      },
+      {
+        path: 'setnewpwd',
+        component: forget2
+      }
+    ]
   }
 ]
 

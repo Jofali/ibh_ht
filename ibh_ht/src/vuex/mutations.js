@@ -3,6 +3,7 @@ const UPDATA_CHANGESTATE = 'UPDATA_CHANGESTATE'
 const UPDATA_GETSESSIONSIGN = 'UPDATA_GETSESSIONSIGN'
 const UPDATA_SORTTABLE = 'UPDATA_SORTTABLE'
 const UPDATA_SORTTABLEDATE = 'UPDATA_SORTTABLEDATE'
+const UPDATA_EMAILEDITPWD = 'UPDATA_EMAILEDITPWD'
 
 export default {
   [UPDATA_STARTLOGIN] (state, data) {
@@ -26,5 +27,8 @@ export default {
   },
   [UPDATA_SORTTABLEDATE] (state, data) {
     state.sortTable[data.i].CreateDate = data.arr
+  },
+  [UPDATA_EMAILEDITPWD] (state, data) {
+    state.emailPwd = data
   }
 }
